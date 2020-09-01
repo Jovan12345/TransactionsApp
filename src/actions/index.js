@@ -27,9 +27,9 @@ export const updateTotalAmount = amount => dispatch => {
 }
 
 export const filterSearchValue = (value, transactions) => dispatch => {
-    console.log(value)
-    const transactionsFiltered = value === '' ? transactions : transactions.filter(x => x.merchant.toLowerCase().indexOf(value) !== -1)
-
+     const transactionsFiltered = value === '' ? transactions : transactions.filter(x => x.merchant.toLowerCase().indexOf(value) !== -1)
+    // transactionsFiltered.value = value;
+    // transactionsFiltered.transactions = transactions;
     dispatch({
         type: SEARCH_TRANSACTIONS,
         payload: transactionsFiltered

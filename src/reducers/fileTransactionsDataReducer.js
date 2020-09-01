@@ -1,4 +1,4 @@
-import { SEARCH_TRANSACTIONS, NEW_TRANSACTION, FILE_TRANSACTIONS } from '../actions/types'
+import { NEW_TRANSACTION, FILE_TRANSACTIONS } from '../actions/types'
 
 export default (state = [], action) => {
     switch (action.type) {
@@ -6,8 +6,6 @@ export default (state = [], action) => {
             return action.payload;
         case NEW_TRANSACTION:
             return [...state, action.payload]
-        case SEARCH_TRANSACTIONS:
-            return action.payload;
         default:
             return state;
     }

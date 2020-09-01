@@ -7,7 +7,7 @@ class SearchBar extends Component {
     handleFormSubmit = ({ query }) =>{
         const transcations = this.props.filereducer;
         this.props.filterSearchValue(query, transcations);
-    }
+    }  
 
     renderInput(field) {
         return <input type='text' placeholder="Search transactions" {...field.input} />
