@@ -1,0 +1,27 @@
+.recentTransactions{
+    background-color: white;
+}
+
+.transctionItems{
+    padding: 10px;
+}
+
+.transctionItems > * {
+    display: inline-block;
+    margin: 5px 10px;
+    vertical-align: middle;
+}
+
+#merchantText{
+    font-weight: bold;
+}
+
+#merchantLogo{
+    width: 45px;
+}
+
+#amount{
+    float: right;
+    font-size: larger;
+    font-weight: bolder;
+}

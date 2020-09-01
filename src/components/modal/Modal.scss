@@ -1,0 +1,16 @@
+.modal-body{
+    background-color: white;
+    margin: auto;
+    height: 30%;
+    width: 30%;
+}
+
+.modal{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: grey;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
