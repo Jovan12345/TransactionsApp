@@ -19,7 +19,7 @@ export const makeNewTransaction = formValues => dispatch => {
 
     transactions.post('/data', formValues);
 
-    dispatch({ type: NEW_TRANSACTION, payload: formValues })
+    dispatch({ type: NEW_TRANSACTION, payload: formValues });
 }
 
 export const updateTotalAmount = amount => dispatch => {
@@ -28,11 +28,9 @@ export const updateTotalAmount = amount => dispatch => {
 
 export const filterSearchValue = (value, transactions) => dispatch => {
      const transactionsFiltered = value === '' ? transactions : transactions.filter(x => x.merchant.toLowerCase().indexOf(value) !== -1)
-    // transactionsFiltered.value = value;
-    // transactionsFiltered.transactions = transactions;
+
     dispatch({
         type: SEARCH_TRANSACTIONS,
-        payload: transactionsFiltered
-    }
-    )
+        payload: {transactionsFiltered, value}
+    });
 }

@@ -8,12 +8,9 @@ class RecentTransactions extends React.Component {
         this.props.getTransactions();
     }
 
-
-
     renderTransactions() {
-    const renderTransactionsData = this.props.statereducer ? this.props.statereducer : (this.props.filereducer ? this.props.filereducer : null)
-    console.log(renderTransactionsData)    
-        if (renderTransactionsData) {
+    const renderTransactionsData = this.props.statereducer.transactionsFiltered !== undefined ? this.props.statereducer.transactionsFiltered : (this.props.filereducer ? this.props.filereducer : null);    
+    if (renderTransactionsData) {
             return renderTransactionsData.map((tr, index) => {
                 if (!tr.totalAmount) {
                     return (
@@ -31,7 +28,6 @@ class RecentTransactions extends React.Component {
     }
 
     render() {
-        console.log('yes')
         return (
             <>
                 <h4>Recent Transactions</h4>
@@ -48,7 +44,7 @@ const mapStateToProps = (state) => {
     
     return {
         filereducer: state.filereducer,
-        statereducer: state.reducer
+        statereducer: state.searchreducer
     }
 }
 
