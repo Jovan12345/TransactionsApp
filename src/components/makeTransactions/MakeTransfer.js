@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { makeNewTransaction } from '../../actions'
 
 class MakeTransfer extends React.Component {
+    componentDidMount() {
+        this.props.getTransactions();
+    }
 
     renderError({ error, touched }) {
         if (touched && error) {
