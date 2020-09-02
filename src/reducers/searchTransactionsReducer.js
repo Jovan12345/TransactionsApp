@@ -1,9 +1,11 @@
-import { SEARCH_TRANSACTIONS } from '../actions/types'
+import { SEARCH_TRANSACTIONS, SORT_TRANSACTIONS } from '../actions/types'
 
 export default (state = [], action) => {
     switch (action.type) {
         case SEARCH_TRANSACTIONS:
-            return Object.assign(action.payload);
+            return action.payload;
+        case SORT_TRANSACTIONS:
+            return action.payload
         default:
             return state;
     }
