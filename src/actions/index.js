@@ -1,6 +1,6 @@
 import transactionsAPI from '../apis/transactions';
 import image from '../utilities/new-logo.png';
-import { FILE_TRANSACTIONS, NEW_TRANSACTION, SEARCH_TRANSACTIONS, SORT_TRANSACTIONS } from './types'
+import { FILE_TRANSACTIONS, NEW_TRANSACTION, SEARCH_TRANSACTIONS, SORT_TRANSACTIONS, BALANCE } from './types'
 
 export const getTransactions = () => async dispatch => {
     const fileData = await transactionsAPI.get('/data');
@@ -9,6 +9,12 @@ export const getTransactions = () => async dispatch => {
     });
 
     dispatch({ type: FILE_TRANSACTIONS, payload: fileData.data });
+}
+
+export const getBalance = () => async dispatch => {
+    const balance = await transactionsAPI.get('/blance');
+
+    dispatch({ type: BALANCE, payload: balance.data })
 }
 
 export const makeNewTransaction = formValues => dispatch => {
@@ -23,7 +29,7 @@ export const makeNewTransaction = formValues => dispatch => {
 }
 
 export const updateTotalAmount = amount => dispatch => {
-    
+
 }
 
 export const filterSearchValue = (value, transactionsInput) => dispatch => {

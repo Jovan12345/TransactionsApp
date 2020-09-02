@@ -2,11 +2,12 @@ import React from 'react';
 import SearchBar from '../searchBar/SearchBar';
 import SortTransactions from '../sortTransactions/SortTransactions';
 import { connect } from 'react-redux';
-import { getTransactions } from '../../actions';
+import { getTransactions,  getBalance} from '../../actions';
 
 class RecentTransactions extends React.Component {
     componentDidMount() {
         this.props.getTransactions();
+        this.props.getBalance();
     }
 
     renderTransactions() {
@@ -50,4 +51,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getTransactions })(RecentTransactions);
+export default connect(mapStateToProps, { getTransactions, getBalance })(RecentTransactions);
