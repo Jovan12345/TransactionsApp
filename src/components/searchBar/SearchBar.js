@@ -5,10 +5,8 @@ import { filterSearchValue } from '../../actions';
 import { debounce } from 'lodash';
 
 class SearchBar extends Component {
-    handleFormSubmit(event) {
-        event.preventDefault();
-    }
-
+    //This function is called when the user types filter value to Search transactions
+    //The debounce function is used to delay the trigger of the action for 250 miliseconds
     handleChange = debounce((event) => {
         const transcations = this.props.filereducer;
         this.props.filterSearchValue(event.target.value, transcations);
@@ -18,10 +16,25 @@ class SearchBar extends Component {
         return <input type='text' placeholder="Search transactions" {...field.input} />;
     }
 
+    clearInput = () => {
+        const transcations = this.props.filereducer;
+        this.props.filterSearchValue('', transcations);
+        this.props.change("query", null);
+    }
+
+    showClearButton() {
+        const filterValue = this.props.searchreducer.value;
+        if (filterValue) {
+            return <button type="reset" onClick={this.clearInput}>X</button>;
+        }
+        return null;
+    }
+
     render() {
         return (
-            <form className="searchbar" onSubmit={this.handleFormSubmit} autoComplete="off">
-                <Field name='query' component={this.renderInput} onChange={this.handleChange} />
+            <form className="searchbar" onSubmit={e => { e.preventDefault() }} autoComplete="off">
+                <Field id="resetButton" name='query' component={this.renderInput} onChange={this.handleChange} />
+                {this.showClearButton()}
             </form>
         );
     }
@@ -29,7 +42,10 @@ class SearchBar extends Component {
 
 const mapStateToProps = (state) => {
 
-    return { filereducer: state.filereducer }
+    return {
+        filereducer: state.filereducer,
+        searchreducer: state.searchreducer
+    }
 }
 
 export default connect(mapStateToProps, { filterSearchValue })(reduxForm({

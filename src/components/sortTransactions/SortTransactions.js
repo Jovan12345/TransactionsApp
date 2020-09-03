@@ -19,7 +19,7 @@ class SortTransactions extends Component {
                 sortedTransactionsData = renderTransactionsData.sort((a, b) => a.amount - b.amount);
                 break;
             default:
-            return new Error();
+                return new Error();
         }
 
         this.props.sortTransactions(sortedTransactionsData)
@@ -27,14 +27,12 @@ class SortTransactions extends Component {
 
     render() {
         return (
-            <>
+            <div className="sortButtons">
                 <p>Sort by: </p>
-                <div className="sortButtons">
-                    <input type="button" value="Date" onClick={(e) => this.buttonHandler(e)} />
-                    <input type="button" value="Beneficiary" onClick={(e) => this.buttonHandler(e)} />
-                    <input type="button" value="Amount" onClick={(e) => this.buttonHandler(e)} />
-                </div>
-            </>
+                <input type="button" id="one" value="Date" onClick={(e) => this.buttonHandler(e)} />
+                <input type="button" id="two" value="Beneficiary" onClick={(e) => this.buttonHandler(e)} />
+                <input type="button" id="three" value="Amount" onClick={(e) => this.buttonHandler(e)} />
+            </div>
         )
     }
 }

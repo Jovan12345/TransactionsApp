@@ -5,7 +5,7 @@ export default (state = [], action) => {
         case FILE_TRANSACTIONS:
             return action.payload;
         case NEW_TRANSACTION:
-            return [...state, action.payload]
+            return [action.payload, ...state]
         default:
             return state;
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from '../searchBar/SearchBar';
 import SortTransactions from '../sortTransactions/SortTransactions';
 import { connect } from 'react-redux';
-import { getTransactions,  getBalance} from '../../actions';
+import { getTransactions, getBalance } from '../../actions';
 
 class RecentTransactions extends React.Component {
     componentDidMount() {
@@ -11,10 +11,11 @@ class RecentTransactions extends React.Component {
     }
 
     renderTransactions() {
-    const renderTransactionsData = this.props.statereducer.transactions ? this.props.statereducer.transactions : (this.props.filereducer ? this.props.filereducer : null);    
-    if (renderTransactionsData) {
+        const renderTransactionsData = this.props.statereducer.transactions ? this.props.statereducer.transactions : (this.props.filereducer ? this.props.filereducer : null);
+        if (renderTransactionsData) {
             return renderTransactionsData.map((tr, index) => {
                 if (!tr.totalAmount) {
+                    tr.transactionDate = new Date(tr.transactionDate).toDateString().slice(4, 10);
                     return (
                         <div key={index} className="transctionItems">
                             <p id="transactionDate">{tr.transactionDate}</p>
@@ -34,8 +35,10 @@ class RecentTransactions extends React.Component {
             <>
                 <h4>Recent Transactions</h4>
                 <div className="recentTransactions">
-                    <SearchBar />
-                    <SortTransactions />
+                    <header>
+                        <SearchBar />
+                        <SortTransactions />
+                    </header>
                     {this.renderTransactions()}
                 </div>
             </>
@@ -44,7 +47,7 @@ class RecentTransactions extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    
+
     return {
         filereducer: state.filereducer,
         statereducer: state.searchreducer

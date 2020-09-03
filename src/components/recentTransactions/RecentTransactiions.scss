@@ -3,7 +3,9 @@
 }
 
 .transctionItems{
-    padding: 10px;
+    margin: 0 10px;
+    border: 1px solid grey;
+    margin-bottom: -1px;
 }
 
 .transctionItems > * {
@@ -24,4 +26,8 @@
     float: right;
     font-size: larger;
     font-weight: bolder;
+}
+
+header{
+    padding: 20px 15px;
 }

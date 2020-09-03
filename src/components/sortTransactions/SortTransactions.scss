@@ -1,0 +1,20 @@
+.sortButtons{
+    display: inline-block;
+    margin-left: 10px;
+    p{
+        display: inline-block;
+        padding: 0 5px;
+    }
+    input{
+        background-color: white;
+        padding: 0 10px;
+        border: 1px solid black;
+        outline: none;
+    }
+    #two, #three {
+        border-left: none;
+    }
+    input:hover, input:focus{
+        background-color: rgb(184, 184, 184);
+    }
+}
