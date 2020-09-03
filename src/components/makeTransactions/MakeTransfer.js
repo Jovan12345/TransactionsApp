@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 import { connect } from 'react-redux';
-import { makeNewTransaction, updateBalance, showModal } from '../../actions';
+import { makeNewTransaction, updateBalance, showModal, stageFormValues } from '../../actions';
 
 import TransactionModal from '../transactionModal/transactionModal';
 
@@ -32,11 +32,15 @@ class MakeTransfer extends React.Component {
     onSubmit = (formValues) => {
         
         this.props.showModal(true)
-        this.props.makeNewTransaction(formValues)
-        
+
+        this.props.stageFormValues(formValues)
+
+        console.log(formValues)
+        //this.props.makeNewTransaction(formValues)
+
         //update total Balance
-        const newBalance = this.props.balancereducer.totalAmount - formValues.amount;
-        this.props.updateBalance(newBalance);
+        //const newBalance = this.props.balancereducer.totalAmount - formValues.amount;
+        //this.props.updateBalance(newBalance);
     }
 
     render() {
@@ -91,7 +95,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { makeNewTransaction, updateBalance, showModal })(reduxForm({
+export default connect(mapStateToProps, { makeNewTransaction, updateBalance, showModal, stageFormValues })(reduxForm({
     form: 'makeAmountTransfer',
     validate,
     onSubmitSuccess: afterSubmit

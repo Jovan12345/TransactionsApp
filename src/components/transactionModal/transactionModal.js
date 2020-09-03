@@ -1,10 +1,16 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { showModal } from '../../actions'
+import { showModal, makeNewTransaction } from '../../actions'
 
 class TransactionModal extends React.Component {
+
     handleClose = () => {
+        this.props.showModal(false)
+    };
+
+    submitTransaction = () => {
+        this.props.makeNewTransaction(this.props.formvaluesreducer);
         this.props.showModal(false)
     };
 
@@ -18,7 +24,7 @@ class TransactionModal extends React.Component {
                     <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
                     <Modal.Footer>
                         <button onClick={this.handleClose}>Close</button>
-                        <button onClick={this.handleClose}>Submit</button>
+                        <button onClick={this.submitTransaction}>Submit</button>
                     </Modal.Footer>
                 </Modal>
             </>
@@ -28,8 +34,9 @@ class TransactionModal extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        modalreducer: state.modalreducer
+        modalreducer: state.modalreducer,
+        formvaluesreducer: state.formvaluesreducer
     }
 }
 
-export default connect(mapStateToProps, { showModal })(TransactionModal);
+export default connect(mapStateToProps, { showModal, makeNewTransaction })(TransactionModal);
