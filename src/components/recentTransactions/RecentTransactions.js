@@ -39,7 +39,9 @@ class RecentTransactions extends React.Component {
                         <SearchBar />
                         <SortTransactions />
                     </header>
-                    {this.renderTransactions()}
+                    <div className="allTransactions">
+                        {this.renderTransactions()}
+                    </div>
                 </div>
             </>
         )

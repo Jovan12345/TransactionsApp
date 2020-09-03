@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { showModal, makeNewTransaction } from '../../actions'
+import { showModal, makeNewTransaction, updateBalance } from '../../actions'
 
 class TransactionModal extends React.Component {
 
@@ -12,6 +12,10 @@ class TransactionModal extends React.Component {
     submitTransaction = () => {
         this.props.makeNewTransaction(this.props.formvaluesreducer);
         this.props.showModal(false)
+
+        //update total Balance
+        const newBalance = this.props.balancereducer.totalAmount - this.props.formvaluesreducer.amount;
+        this.props.updateBalance(newBalance);
     };
 
     render() {
@@ -19,12 +23,15 @@ class TransactionModal extends React.Component {
             <>
                 <Modal show={this.props.modalreducer} onHide={this.handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>Transaction Details</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                    <Modal.Body>
+                        <p>To Account: <b>{this.props.formvaluesreducer.merchant}</b></p>
+                        <p>Amount: <b>{this.props.formvaluesreducer.amount}</b></p>
+                    </Modal.Body>
                     <Modal.Footer>
                         <button onClick={this.handleClose}>Close</button>
-                        <button onClick={this.submitTransaction}>Submit</button>
+                        <button onClick={this.submitTransaction}>Transfer</button>
                     </Modal.Footer>
                 </Modal>
             </>
@@ -35,8 +42,9 @@ class TransactionModal extends React.Component {
 const mapStateToProps = state => {
     return {
         modalreducer: state.modalreducer,
-        formvaluesreducer: state.formvaluesreducer
+        formvaluesreducer: state.formvaluesreducer,
+        balancereducer: state.balancereducer
     }
 }
 
-export default connect(mapStateToProps, { showModal, makeNewTransaction })(TransactionModal);
+export default connect(mapStateToProps, { showModal, makeNewTransaction, updateBalance })(TransactionModal);

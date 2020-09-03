@@ -33,14 +33,7 @@ class MakeTransfer extends React.Component {
         
         this.props.showModal(true)
 
-        this.props.stageFormValues(formValues)
-
-        console.log(formValues)
-        //this.props.makeNewTransaction(formValues)
-
-        //update total Balance
-        //const newBalance = this.props.balancereducer.totalAmount - formValues.amount;
-        //this.props.updateBalance(newBalance);
+        this.props.stageFormValues(formValues)       
     }
 
     render() {
