@@ -3,7 +3,8 @@ form.searchbar button {
     border-top: none;
     border-right: none;
     border-left: none;
-    border-bottom: 2px solid grey;
+    border-bottom: 1px solid grey;
+    border-radius: 15px;
     cursor: pointer;
     outline: none;
 }
@@ -12,8 +13,15 @@ form.searchbar input {
     border-top: none;
     border-right: none;
     border-left: none;
-    border-bottom: 2px solid grey;
+    border-bottom: 1px solid grey;
     float: left;
     outline: none;
+    width: 87%;
 }
 
+@media (max-width: 991px) {
+    form.searchbar input {
+        width: 75%;
+    }
+    
+}

@@ -16,7 +16,6 @@ export const makeNewTransaction = formValues => dispatch => {
     formValues.id = Date.now();
     formValues.merchantLogo = image;
     formValues.transactionType = "Online Transfer";
-    console.log('here')
 
     transactionsAPI.post('/data', formValues);
 

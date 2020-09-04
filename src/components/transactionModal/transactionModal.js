@@ -9,13 +9,17 @@ class TransactionModal extends React.Component {
         this.props.showModal(false)
     };
 
+    
+
     submitTransaction = () => {
+        
         this.props.makeNewTransaction(this.props.formvaluesreducer);
         this.props.showModal(false)
 
         //update total Balance
         const newBalance = this.props.balancereducer.totalAmount - this.props.formvaluesreducer.amount;
         this.props.updateBalance(newBalance);
+        
     };
 
     render() {

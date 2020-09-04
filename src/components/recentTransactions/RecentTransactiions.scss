@@ -1,8 +1,17 @@
-.recentTransactions{
+.recentTransactions {
     background-color: white;
 }
 
-.transctionItems{
+.componentTransactionsHeader {
+    background-color: #0c8397;
+    color: white;
+    margin-bottom: 0;
+    padding: 14px;
+    text-align: center;
+    font-weight: 100;
+}
+
+.transctionItems {
     margin: 0 10px;
     border: 1px solid grey;
     margin-bottom: -1px;
@@ -14,24 +23,40 @@
     vertical-align: middle;
 }
 
-#merchantText{
+#merchantText {
     font-weight: bold;
 }
 
-#merchantLogo{
+#merchantLogo {
     width: 45px;
 }
 
-#amount{
-    float: right;
+#amount {
     font-size: larger;
     font-weight: bolder;
+    float: right;
 }
 
-header{
+header {
     padding: 20px 15px;
 }
 
-.allTransactions{
+.allTransactions {
     padding-bottom: 10px;
+}
+
+.briefcase {
+    float: left;
+    padding: 14px 0 0 14px;
+}
+
+@media (max-width: 991px) {
+    #merchant {
+        margin-right: 0;
+        width: 195px;
+    }
+
+    #amount {
+        margin-left: 0;
+    }
 }

@@ -3,6 +3,7 @@ import SearchBar from '../searchBar/SearchBar';
 import SortTransactions from '../sortTransactions/SortTransactions';
 import { connect } from 'react-redux';
 import { getTransactions, getBalance } from '../../actions';
+import briefcase from '../../utilities/briefcase.png';
 
 class RecentTransactions extends React.Component {
     componentDidMount() {
@@ -33,11 +34,16 @@ class RecentTransactions extends React.Component {
     render() {
         return (
             <>
-                <h4>Recent Transactions</h4>
+                <img src={briefcase} alt="briefcase" className="briefcase"></img>
+                <h5 className="componentTransactionsHeader">Recent Transactions</h5>
                 <div className="recentTransactions">
-                    <header>
-                        <SearchBar />
-                        <SortTransactions />
+                    <header className="row">
+                        <div className="col-lg">
+                            <SearchBar />
+                        </div>
+                        <div className="col-lg-8">
+                            <SortTransactions />
+                        </div>
                     </header>
                     <div className="allTransactions">
                         {this.renderTransactions()}

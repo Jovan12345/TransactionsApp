@@ -3,12 +3,12 @@ import { Field, reduxForm, reset } from 'redux-form';
 import { connect } from 'react-redux';
 import { makeNewTransaction, updateBalance, showModal, stageFormValues } from '../../actions';
 
+import arrows from '../../utilities/arrows.png';
 import TransactionModal from '../transactionModal/transactionModal';
 
 class MakeTransfer extends React.Component {
-
-    renderError({ error, touched }) {
-        if (touched && error) {
+    renderError({ error, submitFailed }) {
+        if (error && submitFailed) {
             return (
                 <>
                     {error}
@@ -18,59 +18,56 @@ class MakeTransfer extends React.Component {
     }
 
     renderInput = ({ input, label, meta, placeholder, disabled }) => {
+        console.log(meta)
         return (
             <div className="transactionFields">
                 <label> {label}</label>
                 <>
                     <input {...input} autoComplete="off" placeholder={placeholder} disabled={disabled} />
-                    {this.renderError(meta)}
+                    <p className="errorMessage">{this.renderError(meta)}</p>
                 </>
             </div>
         );
     }
 
     onSubmit = (formValues) => {
-        
-        this.props.showModal(true)
-
-        this.props.stageFormValues(formValues)       
+        this.props.showModal(true);
+        this.props.stageFormValues(formValues);
     }
 
     render() {
         const balance = this.props.balancereducer.totalAmount ? this.props.balancereducer.totalAmount : '';
         return (
             <>
-                <h4>Make a transfer</h4>
-                
+                <img src={arrows} alt="arrowsIcon" className="arrowsIcon"></img>
+                <h5 className="componentTransferHeader">Make a transfer</h5>
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="makeTransferForm">
                     <Field name="fromAmount" component={this.renderInput} label="FROM ACCOUNT" placeholder={`Free Checking(4692) $${balance}`} disabled="disabled" />
-                    <Field name="merchant" component={this.renderInput} label="TO ACCOUNT" placeholder='Georgia Power Electric Company' />
-                    <Field name="amount" component={this.renderInput} label="AMOUNT" placeholder='$ 0.00' />
-                    <TransactionModal />
-                    <button type="submit">Submit</button>
+                    <Field name="merchant" component={this.renderInput} required label="TO ACCOUNT" placeholder='Georgia Power Electric Company' />
+                    <Field name="amount" type="number" component={this.renderInput} label="AMOUNT" placeholder='$ 0.00' />
+                    <button className="submitButton" type="submit">Submit</button>
                 </form>
-                
-
+                <TransactionModal />
             </>
         )
     }
 }
 
 // Validate users input in form
-const validate = (formValues) => {
+const validate = formValues => {
     const errors = {};
     //TO ACCOUNT input field
     if (!formValues.merchant) {
-        errors.merchant = 'You must enter a value for TO ACCOUNT';
+        errors.merchant = 'Please enter a value';
     }
 
     //AMOUNT input field
     if (!formValues.amount) {
-        errors.amount = 'You must enter AMOUNT';
+        errors.amount = 'Please enter amount';
     } else if (isNaN(formValues.amount)) {
-        errors.amount = 'You must enter valid value for AMOUNT';
+        errors.amount = 'Please enter valid value for amount';
     } else if (formValues.amount < 0 || formValues.amount > 500) {
-        errors.amount = "Amount per transaction must be between $0 and $500"
+        errors.amount = "Amount per transaction must be between $0 and $500";
     }
 
     return errors;
@@ -78,6 +75,7 @@ const validate = (formValues) => {
 
 // Resest form values after submit button is pressed 
 const afterSubmit = (result, dispatch) => {
+    console.log('afterSubmit')
     dispatch(reset('makeAmountTransfer'));
 }
 

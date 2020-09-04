@@ -1,8 +1,47 @@
 .makeTransferForm {
     background-color: white;
+    padding: 15px 10px;
     input {
-        width: 97%;
-
+        width: 100%;
         font-size: clamp(13px, 2vw, 16px);
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background-color: white;
+        border-bottom: 1px solid grey;
+        margin: 10px 0;
     }
+    label{
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+    .submitButton{
+        background-color: #ee7033;
+        color: white;
+        border: none;
+        padding: 5px 20%;
+        border-radius: 5px;
+        display: block;
+        margin: 35px 10px 15px auto;
+    }
+    .transactionFields{
+        margin: 10px 0;
+        .errorMessage{
+            color: red;
+        }
+    }
+}
+
+.componentTransferHeader{
+    background-color: #0c8397;
+    color: white;
+    margin-bottom: 0;
+    padding: 6px ;
+    text-align: center;
+    font-weight: 100;
+}
+
+.arrowsIcon{
+    float: left;
+    padding: 6px 0 0 6px;
 }

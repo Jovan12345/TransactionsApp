@@ -13,10 +13,10 @@ class App extends React.Component {
                 <Header />
                 <div className="container">
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-md-4 makeTransferComponent">
                             <MakeTransfer />
                         </div>
-                        <div className="col">
+                        <div className="col-md recentTransferComponent">
                             <RecentTransactions />
                         </div>
                     </div>
