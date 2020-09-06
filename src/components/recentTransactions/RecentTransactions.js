@@ -12,13 +12,17 @@ class RecentTransactions extends React.Component {
     }
 
     renderTransactions() {
-        const renderTransactionsData = this.props.statereducer.transactions ? this.props.statereducer.transactions : (this.props.filereducer ? this.props.filereducer : null);
-        if (renderTransactionsData) {
+        const sortReducer = this.props.sortrecuder.transactions;
+        const searchReducer = this.props.searchreducer.transactions;
+        const fileReducer = this.props.filereducer;
+        const renderTransactionsData = searchReducer ? searchReducer : (sortReducer ? sortReducer : (fileReducer ? fileReducer : null));
+        if (renderTransactionsData.length !== 0) {
             return renderTransactionsData.map((tr, index) => {
+                const color = "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16);
                 if (!tr.totalAmount) {
                     tr.transactionDate = new Date(tr.transactionDate).toDateString().slice(4, 10);
                     return (
-                        <div key={index} className="transctionItems">
+                        <div key={index} className="transctionItems" style={{ borderLeft: `8px solid ${color}` }}>
                             <p id="transactionDate">{tr.transactionDate}</p>
                             <img id="merchantLogo" src={tr.merchantLogo} alt="merchantLogo" />
                             <p id="merchant"><span id="merchantText">{tr.merchant}</span> <br /><span>{tr.transactionType}</span></p>
@@ -26,9 +30,12 @@ class RecentTransactions extends React.Component {
                         </div>
                     )
                 }
-                return null;
+                return <div>Jovan</div>;
             })
+        } else if(this.props.searchreducer.transactions){
+            return <div><p className="noMatch">No matching results were found</p></div>
         }
+
     }
 
     render() {
@@ -41,7 +48,7 @@ class RecentTransactions extends React.Component {
                         <div className="col-lg">
                             <SearchBar />
                         </div>
-                        <div className="col-lg-8">
+                        <div className="col-lg-6">
                             <SortTransactions />
                         </div>
                     </header>
@@ -58,7 +65,8 @@ const mapStateToProps = (state) => {
 
     return {
         filereducer: state.filereducer,
-        statereducer: state.searchreducer
+        searchreducer: state.searchreducer,
+        sortrecuder: state.sortReducer
     }
 }
 

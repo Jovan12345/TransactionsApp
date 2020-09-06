@@ -5,6 +5,7 @@ import searchTransData from './searchTransactionsReducer';
 import balance from './balanceReducer';
 import modal from './modalReducer';
 import stageFormValues from './stageFormValues';
+import sortReducer from './sortReducer';
 
 export default combineReducers({
     form: formReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
     searchreducer : searchTransData,
     balancereducer: balance,
     modalreducer: modal,
-    formvaluesreducer: stageFormValues
+    formvaluesreducer: stageFormValues,
+    sortReducer: sortReducer
 })

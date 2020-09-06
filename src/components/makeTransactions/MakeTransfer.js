@@ -8,7 +8,7 @@ import TransactionModal from '../transactionModal/transactionModal';
 
 class MakeTransfer extends React.Component {
     renderError({ error, submitFailed }) {
-        if (error && submitFailed) {
+        if (submitFailed) {
             return (
                 <>
                     {error}
@@ -18,7 +18,6 @@ class MakeTransfer extends React.Component {
     }
 
     renderInput = ({ input, label, meta, placeholder, disabled }) => {
-        console.log(meta)
         return (
             <div className="transactionFields">
                 <label> {label}</label>
@@ -42,7 +41,7 @@ class MakeTransfer extends React.Component {
                 <img src={arrows} alt="arrowsIcon" className="arrowsIcon"></img>
                 <h5 className="componentTransferHeader">Make a transfer</h5>
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="makeTransferForm">
-                    <Field name="fromAmount" component={this.renderInput} label="FROM ACCOUNT" placeholder={`Free Checking(4692) $${balance}`} disabled="disabled" />
+                    <Field name="fromAmount" component={this.renderInput} label="FROM ACCOUNT" placeholder={`Free Checking $${balance}`} disabled="disabled" />
                     <Field name="merchant" component={this.renderInput} required label="TO ACCOUNT" placeholder='Georgia Power Electric Company' />
                     <Field name="amount" type="number" component={this.renderInput} label="AMOUNT" placeholder='$ 0.00' />
                     <button className="submitButton" type="submit">Submit</button>

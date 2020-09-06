@@ -17,7 +17,7 @@ class SearchBar extends Component {
     }
 
     clearInput = () => {
-        const transcations = this.props.filereducer;
+        const transcations = this.props.sortrecuder.transcations ? this.props.sortrecuder.transcations : this.props.filereducer;
         this.props.filterSearchValue('', transcations);
         this.props.change("query", null);
     }
@@ -44,7 +44,8 @@ const mapStateToProps = (state) => {
 
     return {
         filereducer: state.filereducer,
-        searchreducer: state.searchreducer
+        searchreducer: state.searchreducer,
+        sortrecuder: state.sortReducer
     }
 }
 

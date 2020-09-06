@@ -19,9 +19,16 @@ form.searchbar input {
     width: 87%;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
     form.searchbar input {
         width: 75%;
+    }
+    
+}
+
+@media (max-width: 767px) {
+    form.searchbar input {
+        width: 80%;
     }
     
 }

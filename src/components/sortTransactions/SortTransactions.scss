@@ -1,31 +1,72 @@
 .sortButtons {
+    width: 360px;
+    float: right;
     p {
         display: inline-block;
-        padding: 0 5px;
+        padding: 3px 12px;
         font-weight: bold;
-    }
-    input {
-        background-color: white;
-        padding: 0 3%;
-        border: 1px solid black;
-        outline: none;
-    }
-    #two,
-    #three {
-        border-left: none;
-    }
+    };
+
     input:hover,
     input:focus {
         background-color: rgb(184, 184, 184);
+    }
+
+    .dropdown, .dropdown2, .dropdown3{
+        display: inline-block;
+        .dropbtn{
+            font-weight: 400;
+            margin: 0;
+            border: 1px solid grey;
+            display: inline-block;
+        }
+    }
+
+    .dropdown-content{
+        display: none;
+        position: absolute;
+        z-index: 1;
+        input{
+            background-color: white;
+            display: block;
+            text-align: left;
+            font-weight: 400;
+            padding: 3px 12px;
+            width: 100px;
+            border: 1px solid grey;
+        }
+        input:hover{
+            background-color: rgb(184, 184, 184);
+            cursor: pointer;
+        }
+    }
+
+    .dropdown:hover, .dropdown2:hover, .dropdown3:hover{
+        .dropbtn{
+            background-color: rgb(184, 184, 184);
+        }
+     .dropdown-content{
+        display: block;
+        }
+    }
+
+    .dropdown2, .dropdown3{
+        .dropbtn{
+            border-left: none;
+        }
     }
 }
 
 @media (max-width: 991px) {
     .sortButtons {
-        margin: 10px 0;
+        float: none;
+        margin: 20px 0 10px 0;
+        width: fit-content;
+        .sortButton{
+            padding-left: 0;
+        }
         p {
             display: inline;
-            padding-left: 0;
         }
     }
 }
