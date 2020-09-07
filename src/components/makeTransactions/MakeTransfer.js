@@ -30,6 +30,10 @@ class MakeTransfer extends React.Component {
     }
 
     onSubmit = (formValues) => {
+        const recordExists = this.props.filereducer.map(x => x.merchant.indexOf(formValues.merchant)).filter(x => x!== -1);
+        const categoryCode = recordExists.length !== 0 ? this.props.filereducer[recordExists[0]].categoryCode : "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+        formValues.categoryCode = categoryCode;
+
         this.props.showModal(true);
         this.props.stageFormValues(formValues);
     }
@@ -74,7 +78,6 @@ const validate = formValues => {
 
 // Resest form values after submit button is pressed 
 const afterSubmit = (result, dispatch) => {
-    console.log('afterSubmit')
     dispatch(reset('makeAmountTransfer'));
 }
 

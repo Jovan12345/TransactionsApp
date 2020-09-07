@@ -18,7 +18,7 @@ class RecentTransactions extends React.Component {
         const renderTransactionsData = searchReducer ? searchReducer : (sortReducer ? sortReducer : (fileReducer ? fileReducer : null));
         if (renderTransactionsData.length !== 0) {
             return renderTransactionsData.map((tr, index) => {
-                const color = "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+                const color = tr.categoryCode;
                 if (!tr.totalAmount) {
                     tr.transactionDate = new Date(tr.transactionDate).toDateString().slice(4, 10);
                     return (
