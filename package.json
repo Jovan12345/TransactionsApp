@@ -9,6 +9,8 @@
     "@types/lodash": "^4.14.161",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "concurrently": "^5.3.0",
+    "json-server": "^0.16.1",
     "lodash": "^4.17.20",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
@@ -22,7 +24,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"json-server -p 3001 -w transactions.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -33,7 +33,7 @@ class RecentTransactions extends React.Component {
                 return <div>Jovan</div>;
             })
         } else if(this.props.searchreducer.transactions){
-            return <div><p className="noMatch">No matching results were found</p></div>
+            return <div><p className="noMatch">No search results were found</p></div>
         }
 
     }

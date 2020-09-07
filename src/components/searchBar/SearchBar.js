@@ -10,25 +10,30 @@ class SearchBar extends Component {
     handleChange = debounce((event) => {
         const transcations = this.props.filereducer;
         this.props.filterSearchValue(event.target.value, transcations);
-    }, 250)
+    }, 250);
 
     renderInput(field) {
         return <input type='text' placeholder="Search transactions" {...field.input} />;
-    }
+    };
 
     clearInput = () => {
         const transcations = this.props.sortrecuder.transcations ? this.props.sortrecuder.transcations : this.props.filereducer;
         this.props.filterSearchValue('', transcations);
         this.props.change("query", null);
-    }
+    };
 
     showClearButton() {
         const filterValue = this.props.searchreducer.value;
         if (filterValue) {
-            return <button type="reset" onClick={this.clearInput}>X</button>;
+            return (
+                <button type="reset" class="close" aria-label="Close">
+                    <span aria-hidden="true" onClick={this.clearInput}>&times;</span>
+                </button>
+            )
+            // return <button type="reset" onClick={this.clearInput}>X</button>;
         }
         return null;
-    }
+    };
 
     render() {
         return (
@@ -37,8 +42,8 @@ class SearchBar extends Component {
                 {this.showClearButton()}
             </form>
         );
-    }
-}
+    };
+};
 
 const mapStateToProps = (state) => {
 
@@ -46,8 +51,8 @@ const mapStateToProps = (state) => {
         filereducer: state.filereducer,
         searchreducer: state.searchreducer,
         sortrecuder: state.sortReducer
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps, { filterSearchValue })(reduxForm({
     form: 'searchBar'
