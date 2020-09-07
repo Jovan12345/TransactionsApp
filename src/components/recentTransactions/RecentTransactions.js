@@ -45,7 +45,7 @@ class RecentTransactions extends React.Component {
                 <h5 className="componentTransactionsHeader">Recent Transactions</h5>
                 <div className="recentTransactions">
                     <header className="row">
-                        <div className="col-lg">
+                        <div className="col-lg-6">
                             <SearchBar />
                         </div>
                         <div className="col-lg-6">

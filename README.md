@@ -19,7 +19,7 @@ This file is created to layout the steps for installation and starting the app a
 ## App description
 
 - This application is built using React, Redux and Json-Server.
-- The purpose of the application is to list out a list of Transactions
+- The purpose of the application is to list out a list of Transactions.
 - There are multiple options available to work with the Transactions: Insert new, Search and Sort. 
 - The transactions are stored in a JSON file which is running on JSON-SERVER. The json-server is automatically started with npm-start.
 - REST principles are used to work with the transactions.json file.
