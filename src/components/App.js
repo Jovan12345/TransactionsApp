@@ -16,7 +16,7 @@ class App extends React.Component {
                         <div className="col-md-4 makeTransferComponent">
                             <MakeTransfer />
                         </div>
-                        <div className="col-md recentTransferComponent">
+                        <div className="col-md-8 recentTransferComponent">
                             <RecentTransactions />
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 import transactionsAPI from '../apis/transactions';
 import image from '../utilities/new-logo.png';
-import { FILE_TRANSACTIONS, NEW_TRANSACTION, SEARCH_TRANSACTIONS, SORT_TRANSACTIONS, BALANCE, BALANCEUPDATE, MODALUPDATE, STAGEFORMVALUES } from './types'
+import { FILE_TRANSACTIONS, NEW_TRANSACTION, SEARCH_TRANSACTIONS, SORT_TRANSACTIONS, BALANCE, BALANCEUPDATE, MODALUPDATE, STAGEFORMVALUES, SORTBUTTONCLICKED } from './types'
 
 
 export const getTransactions = () => async dispatch => {
@@ -50,4 +50,9 @@ export const showModal = showModal => dispatch => {
 
 export const stageFormValues = formValues => dispatch => {
     dispatch({ type: STAGEFORMVALUES, payload: formValues })
+}
+
+export const sortButtonClicked = value => dispatch => {
+
+    dispatch({ type:SORTBUTTONCLICKED, payload:value })
 }

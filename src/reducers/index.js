@@ -6,6 +6,7 @@ import balance from './balanceReducer';
 import modal from './modalReducer';
 import stageFormValues from './stageFormValues';
 import sortReducer from './sortReducer';
+import sortButtonReducer from './sortButtonClicked';
 
 export default combineReducers({
     form: formReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
     balancereducer: balance,
     modalreducer: modal,
     formvaluesreducer: stageFormValues,
-    sortReducer: sortReducer
+    sortReducer: sortReducer,
+    sortButtonReducer: sortButtonReducer
 })

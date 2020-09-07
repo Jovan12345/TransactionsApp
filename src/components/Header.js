@@ -5,7 +5,6 @@ const Header = () => {
     return (
         <div className='page-header'>
             <div className='container'>
-                
                 <h1><img src={peachTreeLogo} alt="peachTreeLogo"></img>Peachtree Bank</h1>
             </div>
         </div>

@@ -5,16 +5,18 @@
         display: inline-block;
         padding: 3px 12px;
         font-weight: bold;
-    };
+    }
 
     input:hover,
     input:focus {
         background-color: rgb(184, 184, 184);
     }
 
-    .dropdown, .dropdown2, .dropdown3{
+    .dropdown,
+    .dropdown2,
+    .dropdown3 {
         display: inline-block;
-        .dropbtn{
+        .dropbtn {
             font-weight: 400;
             margin: 0;
             border: 1px solid grey;
@@ -22,36 +24,44 @@
         }
     }
 
-    .dropdown-content{
+    .dropdown-content {
         display: none;
         position: absolute;
         z-index: 1;
-        input{
+        input {
             background-color: white;
             display: block;
             text-align: left;
             font-weight: 400;
             padding: 3px 12px;
-            width: 100px;
+            width: 110px;
             border: 1px solid grey;
         }
-        input:hover{
+        input:hover {
             background-color: rgb(184, 184, 184);
             cursor: pointer;
         }
     }
 
-    .dropdown:hover, .dropdown2:hover, .dropdown3:hover{
-        .dropbtn{
+    .dropdown:hover,
+    .dropdown2:hover,
+    .dropdown3:hover {
+        .dropbtn {
             background-color: rgb(184, 184, 184);
         }
-     .dropdown-content{
-        display: block;
+        .dropdown-content {
+            display: block;
         }
     }
 
-    .dropdown2, .dropdown3{
-        .dropbtn{
+    [selecedbtn="chooseSort"]{
+        background-color: #0c8397 !important;
+        color: white;
+    }
+
+    .dropdown2,
+    .dropdown3 {
+        .dropbtn {
             border-left: none;
         }
     }
@@ -62,7 +72,7 @@
         float: none;
         margin: 20px 0 10px 0;
         width: fit-content;
-        .sortButton{
+        .sortButton {
             padding-left: 0;
         }
         p {

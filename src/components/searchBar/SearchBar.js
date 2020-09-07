@@ -8,8 +8,8 @@ class SearchBar extends Component {
     //This function is called when the user types filter value to Search transactions
     //The debounce function is used to delay the trigger of the action for 250 miliseconds
     handleChange = debounce((event) => {
-        const transcations = this.props.filereducer;
-        this.props.filterSearchValue(event.target.value, transcations);
+        const transactions = this.props.filereducer;
+        this.props.filterSearchValue(event.target.value, transactions);
     }, 250);
 
     renderInput(field) {
@@ -17,8 +17,8 @@ class SearchBar extends Component {
     };
 
     clearInput = () => {
-        const transcations = this.props.sortrecuder.transcations ? this.props.sortrecuder.transcations : this.props.filereducer;
-        this.props.filterSearchValue('', transcations);
+        const transactions = this.props.sortrecuder.transactions ? this.props.sortrecuder.transactions : this.props.filereducer;
+        this.props.filterSearchValue('', transactions);
         this.props.change("query", null);
     };
 
@@ -30,7 +30,6 @@ class SearchBar extends Component {
                     <span aria-hidden="true" onClick={this.clearInput}>&times;</span>
                 </button>
             )
-            // return <button type="reset" onClick={this.clearInput}>X</button>;
         }
         return null;
     };
